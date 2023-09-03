@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Cta, MobileMenu } from ".";
@@ -18,9 +18,11 @@ import { set } from "react-hook-form";
 const Header = () => {
   const { menu, setMenu } = useMenuContext();
   const [top, setTop] = useState(0);
-  window.addEventListener("scroll", (e) => {
-    setTop(window.scrollY);
-  });
+  useEffect(() => {
+    window.addEventListener("scroll", (e) => {
+      setTop(window.scrollY);
+    });
+  }, []);
 
   return (
     <div
